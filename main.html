@@ -21,6 +21,9 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative; /* Ensure the container is the boundary */
+            width: 90%; /* Limit container width */
+            max-width: 500px; /* Maximum width for the container */
         }
         h1 {
             color: #ff1493;
@@ -79,13 +82,18 @@
 
     <script>
         const noButton = document.getElementById('noButton');
+        const container = document.querySelector('.container');
 
         noButton.addEventListener('mouseover', () => {
-            // Calculate random position within the screen
-            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
-            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            // Calculate random position within the container
+            const containerRect = container.getBoundingClientRect();
+            const maxX = containerRect.width - noButton.offsetWidth;
+            const maxY = containerRect.height - noButton.offsetHeight;
 
-            // Move the button smoothly
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+
+            // Move the button smoothly within the container
             noButton.style.position = 'absolute';
             noButton.style.left = `${x}px`;
             noButton.style.top = `${y}px`;
