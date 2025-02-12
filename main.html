@@ -13,6 +13,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden; /* Prevent scrolling when the button moves */
         }
         .container {
             text-align: center;
@@ -26,6 +27,7 @@
         }
         .buttons {
             margin-top: 20px;
+            position: relative; /* Ensure the buttons are positioned relative to the container */
         }
         button {
             padding: 10px 20px;
@@ -43,7 +45,7 @@
         #noButton {
             background-color: #ff1493;
             color: white;
-            position: relative;
+            position: static; /* Reset position */
         }
     </style>
 </head>
@@ -60,11 +62,21 @@
         const noButton = document.getElementById('noButton');
 
         noButton.addEventListener('mouseover', () => {
+            // Calculate random position within the screen
             const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
             const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+
+            // Move the button smoothly
+            noButton.style.transition = 'left 0.5s ease, top 0.5s ease';
             noButton.style.position = 'absolute';
             noButton.style.left = `${x}px`;
             noButton.style.top = `${y}px`;
+        });
+
+        // Reset the button position when the mouse leaves
+        noButton.addEventListener('mouseout', () => {
+            noButton.style.transition = 'none'; // Disable transition for instant reset
+            noButton.style.position = 'static';
         });
     </script>
 </body>
