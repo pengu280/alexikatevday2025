@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love You SOOO much Lex?</title>
+    <title>LOVE U LEXIPOOO</title>
     <style>
         body {
             background-color: lightpink;
@@ -84,7 +84,7 @@
         const noButton = document.getElementById('noButton');
         const container = document.querySelector('.container');
 
-        noButton.addEventListener('mouseover', () => {
+        function moveButton() {
             // Get the container's dimensions and position
             const containerRect = container.getBoundingClientRect();
             const buttonRect = noButton.getBoundingClientRect();
@@ -101,12 +101,11 @@
             noButton.style.position = 'absolute';
             noButton.style.left = `${x}px`;
             noButton.style.top = `${y}px`;
-        });
+        }
 
-        // Reset the button position when the mouse leaves the window
-        document.addEventListener('mouseleave', () => {
-            noButton.style.position = 'static';
-        });
+        // Add event listeners for both desktop and mobile
+        noButton.addEventListener('mouseover', moveButton); // For desktop
+        noButton.addEventListener('touchstart', moveButton); // For mobile
     </script>
 </body>
 </html>
