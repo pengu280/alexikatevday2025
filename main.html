@@ -34,6 +34,7 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            transition: all 0.3s ease;
         }
         #yesButton {
             background-color: #ff69b4;
@@ -42,6 +43,7 @@
         #noButton {
             background-color: #ff1493;
             color: white;
+            position: relative;
         }
     </style>
 </head>
@@ -50,19 +52,20 @@
         <h1>Will You Be My Valentine?</h1>
         <div class="buttons">
             <button id="yesButton" onclick="alert('Yay! You made me the happiest person! ❤️')">Yes</button>
-            <button id="noButton" onclick="moveButton()">No</button>
+            <button id="noButton">No</button>
         </div>
     </div>
 
     <script>
-        function moveButton() {
-            const noButton = document.getElementById('noButton');
+        const noButton = document.getElementById('noButton');
+
+        noButton.addEventListener('mouseover', () => {
             const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
             const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
             noButton.style.position = 'absolute';
             noButton.style.left = `${x}px`;
             noButton.style.top = `${y}px`;
-        }
+        });
     </script>
 </body>
 </html>
