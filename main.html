@@ -36,7 +36,7 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            transition: all 0.3s ease;
+            transition: all 0.5s ease; /* Smooth transition for movement */
         }
         #yesButton {
             background-color: #ff69b4;
@@ -47,14 +47,33 @@
             color: white;
             position: static; /* Reset position */
         }
+        .small-text {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+        }
+        /* Add this class to style the image */
+        .valentine-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Will You Be My Valentine?</h1>
+
+        <!-- Add your photo here -->
+        <!--
+        <img src="your-image-url.jpg" alt="Valentine Photo" class="valentine-image">
+        -->
+
         <div class="buttons">
             <button id="yesButton" onclick="alert('Yay! You made me the happiest person! ❤️')">Yes</button>
             <button id="noButton">No</button>
+            <div class="small-text">Pressing no allows me the right to repossess your iPad</div>
         </div>
     </div>
 
@@ -67,15 +86,13 @@
             const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
 
             // Move the button smoothly
-            noButton.style.transition = 'left 0.5s ease, top 0.5s ease';
             noButton.style.position = 'absolute';
             noButton.style.left = `${x}px`;
             noButton.style.top = `${y}px`;
         });
 
-        // Reset the button position when the mouse leaves
-        noButton.addEventListener('mouseout', () => {
-            noButton.style.transition = 'none'; // Disable transition for instant reset
+        // Reset the button position when the mouse leaves the window
+        document.addEventListener('mouseleave', () => {
             noButton.style.position = 'static';
         });
     </script>
