@@ -85,24 +85,6 @@
         const container = document.querySelector('.container');
 
         noButton.addEventListener('mouseover', () => {
-            // Calculate random position within the container
+            // Get the container's dimensions and position
             const containerRect = container.getBoundingClientRect();
-            const maxX = containerRect.width - noButton.offsetWidth;
-            const maxY = containerRect.height - noButton.offsetHeight;
-
-            const x = Math.random() * maxX;
-            const y = Math.random() * maxY;
-
-            // Move the button smoothly within the container
-            noButton.style.position = 'absolute';
-            noButton.style.left = `${x}px`;
-            noButton.style.top = `${y}px`;
-        });
-
-        // Reset the button position when the mouse leaves the window
-        document.addEventListener('mouseleave', () => {
-            noButton.style.position = 'static';
-        });
-    </script>
-</body>
-</html>
+            const buttonRect = noButton.getBoundingClientRect
